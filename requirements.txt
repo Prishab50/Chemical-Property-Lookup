@@ -1,2 +1,2 @@
-flask
-pubchempy
+Flask==2.3.5
+PubChemPy==1.0.5
