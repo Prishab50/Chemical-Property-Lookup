@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Chemical Properties</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static\style.css">
+</head>
+
+<body>
+    <div id="layout-container">
+    <h1>Chemical Property Search</h1>
+
+        <div id="lookup-container">
+            <form id="lookup-form" action="/lookup" method="POST">
+                <label for="compound">Compound: </label>
+                <input type="text" id="compound" name="compound" placeholder="Name or Chemical Formula" required>
+                <label for="query">Select Properties (optional): </label>
+                <select id="query" name="query" multiple>
+                    <option value="atom_stereo_count">AtomStereoCount</option>
+                    <option value="bond_stereo_count">BondStereoCount</option>
+                    <option value="charge">Charge</option>
+                    <option value="complexity">Complexity</option>
+                    <option value="conformer_count_3d">ConformerCount3D</option>
+                    <option value="conformer_model_rmsd_3d">ConformerModelRMSD3D</option>
+                    <option value="conformer_rmsd_3d">ConformerModelRMSD3D</option>
+                    <option value="connectivity_smiles">ConnectivitySMILES</option>
+                    <option value="covalent_unit_count">CovalentUnitCount</option>
+                    <option value="defined_atom_stereo_count">DefinedAtomStereoCount</option>
+                    <option value="defined_bond_stereo_count">DefinedBondStereoCount</option>
+                    <option value="effective_rotor_count_3d">EffectiveRotorCount3D</option>
+                    <option value="exact_mass">ExactMass</option>
+                    <option value="feature_acceptor_count_3d">FeatureAcceptorCount3D</option>
+                    <option value="feature_anion_count_3d">FeatureAnionCount3D</option>
+                    <option value="feature_cation_count_3d">FeatureCationCount3D</option>
+                    <option value="feature_count_3d">FeatureCount3D</option>
+                    <option value="feature_donor_count_3d">FeatureDonorCount3D</option>
+                    <option value="feature_hydrophobe_count_3d">FeatureHydrophobeCount3D</option>
+                    <option value="feature_ring_count_3d">FeatureRingCount3D</option>
+                    <option value="h_bond_acceptor_count">HBondAcceptorCount</option>
+                    <option value="h_bond_donor_count">HBondDonorCount</option>
+                    <option value="heavy_atom_count">HeavyAtomCount</option>
+                    <option value="inchi">InChI</option>
+                    <option value="inchikey">InChIKey</option>
+                    <option value="isotope_atom_count">IsotopeAtomCount</option>
+                    <option value="iupac_name">IUPACName</option>
+                    <option value="molecular_formula">MolecularFormula</option>
+                    <option value="molecular_weight">MolecularWeight</option>
+                    <option value="monoisotopic_mass">MonoisotopicMass</option>
+                    <option value="rotatable_bond_count">RotatableBondCount</option>
+                    <option value="smiles">SMILES</option>
+                    <option value="tpsa">TPSA</option>
+                    <option value="undefined_atom_stereo_count">UndefinedAtomStereoCount</option>
+                    <option value="undefined_bond_stereo_count">UndefinedBondStereoCount</option>
+                    <option value="volume_3d">Volume3D</option>
+                    <option value="x_steric_quadrupole_3d">XStericQuadrupole3D</option>
+                    <option value="xlogp">XLogP</option>
+                    <option value="y_steric_quadrupole_3d">YStericQuadrupole3D</option>
+                    <option value="z_steric_quadrupole_3d">ZStericQuadrupole3D</option>
+                </select>
+                <button type="submit">Search</button>
+                <button type="reset">Clear All</button>
+            </form>
+        </div>
+
+        <div id="results-container">
+        {% if result and result is mapping %}
+        <h2>{{ compound }} Properties: </h2>
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in result.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>{{ result }}</p>
+            {% endif %}
+        </div>
+    </div>
+    
+    <footer>
+        <p>
+        This tool uses the PubChem python library PubChemPy. 
+        For more information visit: https://docs.pubchempy.org/en/latest/index.html
+        </p>
+    </footer>
+</body>
+
+
+</html>
