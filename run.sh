@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Running unit tests"
-python -m unittest src/tests/unit-tests.py
+python -m unittest tests/unit-tests.py
 
 echo "Building docker image"
 docker build -t chemical-lookup:latest .
