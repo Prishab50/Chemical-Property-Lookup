@@ -1,2 +1,2 @@
-Flask==2.3.5
+Flask
 PubChemPy==1.0.5
