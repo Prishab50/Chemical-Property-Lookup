@@ -35,7 +35,7 @@ def lookup_by_formula(formula):
 def search(compound=''):
     if ' ' in compound or '-' in compound:
         c = lookup_by_name(compound)
-    elif '1234567890' in compound:
+    elif any(ch.isdigit() for ch in compound):
         c = lookup_by_formula(compound)
     else:
         c = lookup_by_name(compound)
@@ -52,7 +52,7 @@ TITLES = {
     "elements": "Elements",
     "atoms": "Atoms",
     "bonds": "Bonds",
-    "coord_type": "Coordinate Type",
+    "coordinate_type": "Coordinate Type",
     "charge": "Charge",
     "molecular_formula": "Molecular Formula",
     "molecular_weight": "Molecular Weight",
