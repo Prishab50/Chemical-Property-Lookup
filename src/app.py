@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from models import filter_cmpd_info
+import os
 
 app = Flask(__name__)
 
@@ -27,4 +28,5 @@ def lookup():
     return render_template('index.html', compound=compound, result=result)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+
+    app.run(host='0.0.0.0', port=port=int(os.environ.get("PORT", 5000))
