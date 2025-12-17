@@ -35,7 +35,7 @@ def lookup_by_formula(formula):
 def search(compound=''):
     if ' ' in compound or '-' in compound:
         c = lookup_by_name(compound)
-    elif any(ch.isdigit() for ch in compound):
+    elif '0123456789' in compound:
         c = lookup_by_formula(compound)
     else:
         c = lookup_by_name(compound)
@@ -114,3 +114,4 @@ def filter_cmpd_info(compound=None, query=None):
             titled_data[TITLES.get(prop, prop)] = data.get(prop, 'N/A') #replaces property key with readable property
         return titled_data
 
+print(filter_cmpd_info('o3'))
