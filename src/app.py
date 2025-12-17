@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from models import filter_cmpd_info
+from .models import filter_cmpd_info
 
 app = Flask(__name__)
 
