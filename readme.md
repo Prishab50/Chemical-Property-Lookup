@@ -161,4 +161,5 @@ Ozone Search Results
 
 # 7) Links
 
+**Cloud Deploy**: <https://chemical-property-lookup.onrender.com>
 **Github:** <https://github.com/Prishab50/Chemical-Property-Lookup>
